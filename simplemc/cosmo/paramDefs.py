@@ -16,13 +16,14 @@ from simplemc.cosmo.Parameter import Parameter
 Om_par = Parameter("Om", 0.3038, 0.05, (0.1, 0.5), "\Omega_m")
 Obh2_par = Parameter("Obh2", 0.02234, 0.001, (0.02, 0.025), "\Omega_{b}h^2")
 h_par = Parameter("h", 0.6821, 0.05, (0.4, 0.9), "h")
+#h_par = Parameter("h", 0.73, 0.01, (0.72, 0.74), "h")
 
 # Neutrino mass and effective number.
 mnu_par = Parameter("mnu", 0.06, 0.1, (0, 1.0), "\Sigma m_{\\nu}")
 Nnu_par = Parameter("Nnu", 3.046, 0.5, (3.0, 3.1), "N_{\\rm eff}")
 
 # Curvature and DE equation of state.
-Ok_par = Parameter("Ok", 0.0, 0.01, (-0.02, 0.02), "\Omega_k")
+Ok_par = Parameter("Ok", 0.0, 0.01, (-0.01, 0.03), "\Omega_k")
 w_par = Parameter("w", -1., 0.1, (-2.0, 0.0), "w_0")
 wa_par = Parameter("wa", 0.0, 0.1, (-2.0, 2.0), "w_a")
 wb_par = Parameter("wb", 0.7, 0.2, (-2., 3.0), "w_b")
@@ -168,4 +169,31 @@ wcpl_par = Parameter("wcpl", 0.0, 0.03, (0, 0.5), "w_{cpl}")
 
 LMBD_par = Parameter("LMBD", 0.65, 0.02, (0, 1), "w_{cpl}")
 
+#IDE_GP
+w_ide_par = Parameter("w_ide", -1.0, 0.1, (-3.0,1.0), "w_{ide}")
 
+#SSIK
+alpha_ssik_par = Parameter("alpha_ssik", 1.0, 1.0, (0.0, 5.9), "\\alpha")
+sigma_ssik_par = Parameter("sigma_ssik", 0.001, 0.02, (0.0, 1.0), "\sigma")
+
+#Hermitian wavelet
+#a_wave_par = Parameter("a_wave", 0.0, 0.00005,(-0.001, 0.001), "\\alpha_{h}")
+#b_wave_par = Parameter("b_wave", 2.0, 0.1, (0.5,5.0), "\\beta_{h}")
+#zcross_wave_par = Parameter("zcross_wave", 1.5, 0.1, (1.2,3.0), "z^{\dagger}")
+
+a_wave_par = Parameter("a_wave", 0.0, 0.0005,(-0.01, 0.01), "\\alpha_{h}")
+b_wave_par = Parameter("b_wave", 2.0, 0.1, (0.1,25.0), "\\beta_{h}")
+zcross_wave_par = Parameter("zcross_wave", 2.0, 0.1, (0.0,5.0), "z^{\dagger}")
+
+#params supriya
+w1_par = Parameter("w1", -1.0, 0.2,(-2.0, 0.0), "w_1")
+w2_par = Parameter("w2", 0.0, 0.5,(-3.0, 3.0), "w_2")
+b_oscil_par = Parameter("b_oscil", 0.0, 0.5, (-3.0, 3.0), "b")
+
+#tonatiuhcdm
+cmade_par = Parameter("cmade", 0.9, 0.1, (0.1, 1.0), "cmade")
+qcmade_par = Parameter("qcmade", 1.0, 0.2, (-2.0, 2.0), "Q")
+
+
+#LsCDM
+zt_par = Parameter("zt", 1.0, 0.1, (1.0,3.0), "z_t")

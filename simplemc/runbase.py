@@ -25,6 +25,17 @@ from .models import StepCDMCosmology
 from .models import BinnedWCosmology
 from .models import CompressPantheon
 from .models import TanhCosmology
+from .models import GPCosmology
+from .models import IDECosmology
+from .models import IDEEOSCosmology
+from .models import IDEGPCosmology
+from .models import IDEEOSGPCosmology
+from .models import IDESignSwitchCosmology
+from .models import WiggleCDMCosmology
+from .models import HermitWaveletCDMCosmology
+from .models import TonatiuhCDMCosmology
+from .models import OscillatingEOS
+from .models import LsCDMCosmology
 
 #Generic model
 from .models.SimpleModel import SimpleModel, SimpleCosmoModel
@@ -38,7 +49,7 @@ from .likelihoods.LikelihoodMultiplier import LikelihoodMultiplier
 # Likelihood modules
 from .likelihoods.BAOLikelihoods import DR11LOWZ, DR11CMASS, DR14LyaAuto, DR14LyaCross, \
                                         SixdFGS, SDSSMGS, DR11LyaAuto, DR11LyaCross, eBOSS, \
-                                        DR12Consensus
+                                        DR12Consensus, DR16BAO
 from .likelihoods.SimpleCMBLikelihood import PlanckLikelihood, PlanckLikelihood_15, WMAP9Likelihood
 from .likelihoods.CompressedSNLikelihood import BetouleSN, UnionSN
 from .likelihoods.SNLikelihood import JLASN_Full
@@ -101,10 +112,12 @@ def ParseModel(model, **kwargs):
         T.setVaryMnu()
     elif model == "wCDM":
         T = wCDMCosmology()
+    elif model == "LsCDM":
+        T = LsCDMCosmology()
     elif model == "nuwCDM":
         T = wCDMCosmology()
         T.setVaryMnu()
-    elif model == "wa2CDM":
+    elif model == "CPL":
         T = owa0CDMCosmology(varyOk=False)
     elif model == "owCDM":
         T = owa0CDMCosmology(varywa=False)
@@ -151,8 +164,58 @@ def ParseModel(model, **kwargs):
         T.setVaryMnu()
     elif model == "Binned":
         T = BinnedWCosmology()
-    elif model == "Tanh":
+    elif model == "eos_tanh20_eta015":
         T = TanhCosmology()
+    elif model == "eos_GP4":
+        T = GPCosmology()
+    elif model == "idetanh5_betoprior":
+        T = IDECosmology()
+    elif model == "ide_eos_tanh5_cutprior":
+        T = IDEEOSCosmology()
+    elif model == "idegp5_betoprior":
+        T = IDEGPCosmology()
+    elif model == "ide_eos_gp5_cutprior":
+        T = IDEEOSGPCosmology()
+    elif model == 'idegp5_betoprior_nowide':
+        T = IDEGPCosmology(varyw_ide=False)
+    elif model == 'idetanh5_betoprior_nowide':
+        T = IDECosmology(varyw_ide=False)
+    elif model == 'ideSSIK_varying':
+        T = IDESignSwitchCosmology()
+    elif model == 'tonatiuhcdm_doublevary':
+        T = TonatiuhCDMCosmology()
+    elif model == 'tonatiuhcdm_doublevary_nocurv':
+        T = TonatiuhCDMCosmology(varyOk=False)
+    elif model == 'tonatiuhcdm_vary':
+        T = TonatiuhCDMCosmology(varyqcmade=False)
+    elif model == 'tonatiuhcdm_novary':
+        T = TonatiuhCDMCosmology(varycmade=False, varyqcmade=False)
+    elif model == 'oscillating1':
+        T = OscillatingEOS(varyw2 = False, model='model1')
+    elif model == 'oscillating2':
+        T = OscillatingEOS(varyw2 = False, model='model2')
+    elif model == 'oscillating3':
+        T = OscillatingEOS(varyw2 = False, model='model3')
+    elif model == 'oscillating4':
+        T = OscillatingEOS(varyw2 = False, model='model4')
+    elif model == 'wigglecdm':
+        T = WiggleCDMCosmology()
+    elif model == 'hermit_wavelet_psi1':
+        T = HermitWaveletCDMCosmology(type_wavelet='hermitian_1')
+    elif model == 'hermit_wavelet_psi2':
+        T = HermitWaveletCDMCosmology(type_wavelet='hermitian_2')
+    elif model == 'hermit_wavelet_psi3':
+        T = HermitWaveletCDMCosmology(type_wavelet='hermitian_3')
+    elif model == 'hermit_wavelet_psi4':
+        T = HermitWaveletCDMCosmology(type_wavelet='hermitian_4')
+    elif model == 'hermit_wavelet_h73pm1_psi1':
+        T = HermitWaveletCDMCosmology(type_wavelet='hermitian_1')
+    elif model == 'hermit_wavelet_h73pm1_psi2':
+        T = HermitWaveletCDMCosmology(type_wavelet='hermitian_2')
+    elif model == 'hermit_wavelet_h73pm1_psi3':
+        T = HermitWaveletCDMCosmology(type_wavelet='hermitian_3')
+    elif model == 'hermit_wavelet_h73pm1_psi4':
+        T = HermitWaveletCDMCosmology(type_wavelet='hermitian_4')
     elif model == 'CPantheon':
         T = CompressPantheon()
     elif model == 'DGP':
@@ -257,6 +320,12 @@ def ParseDataset(datasets, **kwargs):
             L.addLikelihoods([
                 DR14LyaAuto(),
             ])
+        elif name == 'DR16BAO_lya':
+            L.addLikelihoods([
+                DR16BAO(),
+                DR14LyaAuto(),
+                DR14LyaCross()
+            ])
         elif name == 'LxBAO':
             L.addLikelihoods([
                 DR14LyaCross(),
@@ -267,6 +336,13 @@ def ParseDataset(datasets, **kwargs):
             L.addLikelihood(SixdFGS())
         elif name == 'eBOSS':
             L.addLikelihood(eBOSS())
+        #elif name == 'DR16BAO_lya':
+        #    L.addLikelihoods([
+        #        DR16BAO(),
+        #        DR14LyaAuto(),
+        #        DR14LyaCross()])
+        elif name == 'DR16BAO':
+            L.addLikelihood(DR16BAO())
         elif name == 'Planck':
             L.addLikelihood(PlanckLikelihood())
         elif name == 'Planck_15':

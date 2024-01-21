@@ -371,6 +371,7 @@ class DriverMC:
             sampler.run_nested(nlive_init=nlivepoints, dlogz_init=0.05, nlive_batch=100,
                             maxiter_init=10000, maxiter_batch=1000, maxbatch=10,
                             outputname=self.outputpath, addDerived=self.addDerived, simpleLike=self.L)
+                            #,checkpoint_file = example.save) #luis mod
             M = sampler.results
 
 
@@ -380,6 +381,7 @@ class DriverMC:
                         pool = pool, queue_size=nprocess, use_pool={'loglikelihood': False})
             sampler.run_nested(dlogz=accuracy, outputname=self.outputpath,
                                addDerived=self.addDerived, simpleLike=self.L)
+                               #,checkpoint_file = example.save) #luis mod
             M = sampler.results
 
         try:

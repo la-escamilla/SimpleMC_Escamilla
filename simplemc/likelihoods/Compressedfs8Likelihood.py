@@ -45,7 +45,7 @@ class Compressedfs8Likelihood(BaseLikelihood):
 
 
 class fs8Diagram(Compressedfs8Likelihood):
-    # data from arXiv:1806.10822
+    # data from arXiv:1806.10822   puede ser fs8Diagram o fs8_eleonora
     def __init__(self):
-        Compressedfs8Likelihood.__init__(self,"fs8", cdir+"/data/fs8Diagram.txt",
-                                         cdir+"/data/fs8Diagram-cov.txt")
+        Compressedfs8Likelihood.__init__(self,"fs8", cdir+"/data/fs8_eleonora.txt",
+                                         cdir+"/data/fs8_eleonora-cov.txt")

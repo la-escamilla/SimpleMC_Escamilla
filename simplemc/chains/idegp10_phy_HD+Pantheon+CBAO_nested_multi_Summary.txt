@@ -1,0 +1,27 @@
+SUMMARY
+-------
+analyzer: nested
+nested_algorithm: multi
+dynamic: False
+maxlike: 523.1658
+nlive: 200
+niter: 5439
+ncall: 231989
+%eff: 2.4311
+logz: -545.6916 +/- 0.4122
+Om: 0.3069 +/- 0.0264
+Obh2: 0.0220 +/- 0.0004
+h: 0.6680 +/- 0.0258
+w_ide: -0.4819 +/- 0.1525
+zbin_ide0: 5.3878 +/- 2.8463
+zbin_ide1: -2.0575 +/- 1.9673
+zbin_ide2: -1.0395 +/- 1.9532
+zbin_ide3: 1.8683 +/- 3.2518
+zbin_ide4: 1.7562 +/- 4.0098
+zbin_ide5: -0.6389 +/- 5.2816
+zbin_ide6: 0.0069 +/- 5.5669
+zbin_ide7: -0.3529 +/- 5.5002
+zbin_ide8: 0.1258 +/- 5.5410
+zbin_ide9: -0.0836 +/- 5.5486
+
+Elapsed time: 31906.302 minutes = 1914378.119 seconds 

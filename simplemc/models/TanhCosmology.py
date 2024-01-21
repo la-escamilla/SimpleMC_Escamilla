@@ -12,9 +12,9 @@ class TanhCosmology(LCDMCosmology):
     def __init__(self):
 
 
-        self.Nbins_eos = 3
+        self.Nbins_eos = 20
         mean_eos = -1
-        self.params = [Parameter("zbin_eos%d"%i, mean_eos, 0.2, (-3.5, 0), "zbin_eos%d"%i) for i in range(self.Nbins_eos)]
+        self.params = [Parameter("zbin_eos%d"%i, mean_eos, 0.3, (-3.0, 0.0), "zbin_eos%d"%i) for i in range(self.Nbins_eos)]
         self.pvals = [i.value for i in self.params]
         self.z_i = np.linspace(0.0, 3.0, self.Nbins_eos+1)
 

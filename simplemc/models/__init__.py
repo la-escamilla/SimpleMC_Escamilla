@@ -30,5 +30,15 @@ from .wCDMCosmology import wCDMCosmology
 from .WeirdCDMCosmology import WeirdCDMCosmology
 from .wFourierCosmology import wFourierCosmology
 from .TanhCosmology import TanhCosmology 
-
+from .GPCosmology import GPCosmology
+from .IDECosmology import IDECosmology
+from. IDEEOSCosmology import IDEEOSCosmology
+from .IDEGPCosmology import IDEGPCosmology
+from .IDEEOSGPCosmology import IDEEOSGPCosmology
+from .IDESignSwitchCosmology import IDESignSwitchCosmology
+from .WiggleCDMCosmology import WiggleCDMCosmology
+from .HermitWaveletCDMCosmology import HermitWaveletCDMCosmology
+from .TonatiuhCDMCosmology import TonatiuhCDMCosmology
+from .OscillatingEOS import OscillatingEOS
+from .LsCDMCosmology import LsCDMCosmology
 #from .ePhiCDMCosmology import ePhiCosmology
